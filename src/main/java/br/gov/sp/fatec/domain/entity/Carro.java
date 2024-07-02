@@ -20,7 +20,7 @@ public class Carro {
     private Long id;
     private String modelo;
     private String marca;
-    private String ano;
+    private int ano;
 
     @Enumerated(value = EnumType.STRING)
     private CarroStatus status;

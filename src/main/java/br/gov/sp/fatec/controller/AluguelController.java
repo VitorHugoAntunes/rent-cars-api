@@ -5,6 +5,7 @@ import static br.gov.sp.fatec.constants.PathConstants.ALUGUEL_V1;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_PROBLEM_JSON_VALUE;
 
+import br.gov.sp.fatec.domain.enums.AluguelStatus;
 import br.gov.sp.fatec.domain.request.AluguelRequest;
 import br.gov.sp.fatec.domain.request.AluguelUpdateRequest;
 import br.gov.sp.fatec.domain.response.AluguelResponse;
@@ -94,6 +95,8 @@ public interface AluguelController {
             })
     @GetMapping(ALUGUEL_V1)
     ResponseEntity<List<AluguelResponse>> findAll();
+
+    ResponseEntity<List<AluguelResponse>> findAll(AluguelStatus status);
 
     @Operation(
             summary = "Atualizar um aluguel por ID",

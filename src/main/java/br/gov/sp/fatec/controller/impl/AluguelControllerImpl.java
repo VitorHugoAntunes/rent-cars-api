@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.controller.impl;
 
 import br.gov.sp.fatec.controller.AluguelController;
+import br.gov.sp.fatec.domain.enums.AluguelStatus;
 import br.gov.sp.fatec.domain.request.AluguelRequest;
 import br.gov.sp.fatec.domain.request.AluguelUpdateRequest;
 import br.gov.sp.fatec.domain.response.AluguelResponse;
@@ -31,7 +32,12 @@ public class AluguelControllerImpl implements AluguelController {
 
     @Override
     public ResponseEntity<List<AluguelResponse>> findAll() {
-        return ok(aluguelService.findAll());
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<List<AluguelResponse>> findAll(AluguelStatus status) {
+        return ok(aluguelService.findAll(status));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.service;
 
+import br.gov.sp.fatec.domain.enums.AluguelStatus;
 import br.gov.sp.fatec.domain.request.AluguelRequest;
 import br.gov.sp.fatec.domain.request.AluguelUpdateRequest;
 import br.gov.sp.fatec.domain.response.AluguelResponse;
@@ -10,7 +11,9 @@ public interface AluguelService {
 
     AluguelResponse findById(Long id);
 
-    List<AluguelResponse> findAll();
+    List<AluguelResponse> findAll(
+            AluguelStatus status
+    );
 
     void updateById(Long id, AluguelUpdateRequest aluguelUpdateRequest);
 
