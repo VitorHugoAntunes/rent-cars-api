@@ -55,6 +55,7 @@ public class CarroServiceImpl implements CarroService {
         carroRepository.save(carro);
     }
 
+    @Transactional (readOnly = true)
     @Override
     public void deleteById(Long id) {
         findById(id);

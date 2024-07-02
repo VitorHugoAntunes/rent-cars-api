@@ -55,6 +55,7 @@ public class ClienteServiceImpl implements ClienteService {
         clienteRepository.save(cliente);
     }
 
+    @Transactional (readOnly = true)
     @Override
     public void deleteById(Long id) {
         findById(id);

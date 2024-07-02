@@ -34,6 +34,7 @@ public class AluguelServiceImpl implements AluguelService {
     private final ClienteRepository clienteRepository;
     private final AluguelMapper aluguelMapper = AluguelMapper.INSTANCE;
 
+    @Transactional(readOnly = true)
     @Override
     public List<AluguelResponse> findAll(AluguelStatus status) {
         if (status == null) {
@@ -74,6 +75,7 @@ public class AluguelServiceImpl implements AluguelService {
         return aluguelMapper.map(aluguelRepository.save(aluguel));
     }
 
+    @Transactional (readOnly = true)
     @Override
     public AluguelResponse findById(Long id) {
         Aluguel aluguel = aluguelRepository.findById(id).orElseThrow(
@@ -83,6 +85,7 @@ public class AluguelServiceImpl implements AluguelService {
     }
 
 
+    @Transactional
     @Override
     public void updateById(Long id, AluguelUpdateRequest aluguelUpdateRequest) {
         Aluguel aluguel = aluguelRepository.findById(id).orElseThrow(
@@ -92,6 +95,7 @@ public class AluguelServiceImpl implements AluguelService {
         aluguelRepository.save(aluguel);
     }
 
+    @Transactional
     @Override
     public void deleteById(Long id) {
         findById(id);
