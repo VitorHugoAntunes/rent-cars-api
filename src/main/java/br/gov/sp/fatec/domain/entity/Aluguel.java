@@ -22,11 +22,9 @@ public class Aluguel {
     private Double valor;
 
     @ManyToOne
-    @JoinColumn(name = "carro_id")
     Carro carro;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
     Cliente cliente;
 
     @Enumerated(value = EnumType.STRING)

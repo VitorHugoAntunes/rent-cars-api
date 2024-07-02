@@ -40,7 +40,7 @@ public class AluguelServiceImpl implements AluguelService {
         if (status == null) {
             return aluguelRepository.findAll().stream().map(aluguelMapper::map).toList();
         }
-        return aluguelRepository.findByAluguelStatus(status).stream()
+        return aluguelRepository.findByStatus(status).stream()
                 .map(aluguelMapper::map)
                 .toList();
     }
@@ -49,9 +49,9 @@ public class AluguelServiceImpl implements AluguelService {
     @Override
     public AluguelResponse save(AluguelRequest aluguelRequest) {
         Carro carro = carroRepository.findById(
-                aluguelRequest.carro().getId()
+                aluguelRequest.carroId()
         ).orElseThrow(
-                () -> new EntityNotFoundException("Carro não encontrado com id: " + aluguelRequest.carro().getId())
+                () -> new EntityNotFoundException("Carro não encontrado com id: " + aluguelRequest.carroId())
         );
 
         if (Objects.equals(carro.getStatus(), CarroStatus.ALUGADO)) {
@@ -59,9 +59,9 @@ public class AluguelServiceImpl implements AluguelService {
         }
 
         Cliente cliente = clienteRepository.findById(
-                aluguelRequest.cliente().getId()
+                aluguelRequest.clienteId()
         ).orElseThrow(
-                () -> new EntityNotFoundException("Cliente não encontrado com id: " + aluguelRequest.cliente().getId())
+                () -> new EntityNotFoundException("Cliente não encontrado com id: " + aluguelRequest.clienteId())
         );
 
         carro.setStatus(CarroStatus.ALUGADO);

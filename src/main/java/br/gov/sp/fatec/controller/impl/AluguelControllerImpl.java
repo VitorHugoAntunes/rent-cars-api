@@ -31,11 +31,6 @@ public class AluguelControllerImpl implements AluguelController {
     }
 
     @Override
-    public ResponseEntity<List<AluguelResponse>> findAll() {
-        return null;
-    }
-
-    @Override
     public ResponseEntity<List<AluguelResponse>> findAll(AluguelStatus status) {
         return ok(aluguelService.findAll(status));
     }

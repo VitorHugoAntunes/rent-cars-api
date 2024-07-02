@@ -6,6 +6,6 @@ import lombok.Builder;
 
 @Builder
 public record AluguelRequest(
-        Carro carro,
-        Cliente cliente
+        Long carroId,
+        Long clienteId
 ) {}

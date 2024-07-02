@@ -12,6 +12,6 @@ public record AluguelResponse(
         LocalDate dataInicio,
         LocalDate dataFim,
         Double valor,
-        Carro carro,
-        Cliente cliente
+        Long carroId,
+        Long clienteId
 ) {}

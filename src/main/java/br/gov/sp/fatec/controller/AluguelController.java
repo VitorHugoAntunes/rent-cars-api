@@ -94,8 +94,6 @@ public interface AluguelController {
                                         schema = @Schema(implementation = ProblemDetail.class)))
             })
     @GetMapping(ALUGUEL_V1)
-    ResponseEntity<List<AluguelResponse>> findAll();
-
     ResponseEntity<List<AluguelResponse>> findAll(AluguelStatus status);
 
     @Operation(
