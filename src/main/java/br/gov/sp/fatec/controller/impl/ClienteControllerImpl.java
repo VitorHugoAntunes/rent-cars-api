@@ -10,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.ResponseEntity.*;
+
 @RestController
 @RequiredArgsConstructor
 public class ClienteControllerImpl implements ClienteController {
@@ -18,26 +21,28 @@ public class ClienteControllerImpl implements ClienteController {
 
     @Override
     public ResponseEntity<ClienteResponse> save(ClienteRequest cliente) {
-        return null;
+        return status(CREATED).body(clienteService.save(cliente));
     }
 
     @Override
     public ResponseEntity<ClienteResponse> findById(Long id) {
-        return null;
+        return ok(clienteService.findById(id));
     }
 
     @Override
     public ResponseEntity<List<ClienteResponse>> findAll() {
-        return null;
+        return ok(clienteService.findAll());
     }
 
     @Override
     public ResponseEntity<Void> updateById(Long id, ClienteUpdateRequest request) {
-        return null;
+        clienteService.updateById(id, request);
+        return noContent().build();
     }
 
     @Override
     public ResponseEntity<Void> deleteById(Long id) {
-        return null;
+        clienteService.deleteById(id);
+        return noContent().build();
     }
 }

@@ -10,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.ResponseEntity.*;
+
 @RestController
 @RequiredArgsConstructor
 public class CarroControllerImpl implements CarroController {
@@ -18,26 +21,28 @@ public class CarroControllerImpl implements CarroController {
 
     @Override
     public ResponseEntity<CarroResponse> save(CarroRequest carro) {
-        return null;
+        return status(CREATED).body(carroService.save(carro));
     }
 
     @Override
     public ResponseEntity<CarroResponse> findById(Long id) {
-        return null;
+        return ok(carroService.findById(id));
     }
 
     @Override
     public ResponseEntity<List<CarroResponse>> findAll() {
-        return null;
+        return ok(carroService.findAll());
     }
 
     @Override
     public ResponseEntity<Void> updateById(Long id, CarroUpdateRequest request) {
-        return null;
+        carroService.updateById(id, request);
+        return noContent().build();
     }
 
     @Override
     public ResponseEntity<Void> deleteById(Long id) {
-        return null;
+        carroService.deleteById(id);
+        return noContent().build();
     }
 }

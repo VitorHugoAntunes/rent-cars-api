@@ -6,10 +6,12 @@ import br.gov.sp.fatec.domain.entity.Aluguel;
 import br.gov.sp.fatec.domain.request.AluguelRequest;
 import br.gov.sp.fatec.domain.response.AluguelResponse;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = SPRING)
 public interface AluguelMapper {
-    Aluguel map(AluguelRequest source);
+    AluguelMapper INSTANCE = Mappers.getMapper(AluguelMapper.class);
 
+    Aluguel map(AluguelRequest source);
     AluguelResponse map(Aluguel source);
 }

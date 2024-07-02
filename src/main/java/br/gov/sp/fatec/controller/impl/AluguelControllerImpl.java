@@ -6,6 +6,9 @@ import br.gov.sp.fatec.domain.request.AluguelUpdateRequest;
 import br.gov.sp.fatec.domain.response.AluguelResponse;
 import br.gov.sp.fatec.service.AluguelService;
 import java.util.List;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.ResponseEntity.*;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,26 +21,28 @@ public class AluguelControllerImpl implements AluguelController {
 
     @Override
     public ResponseEntity<AluguelResponse> save(AluguelRequest aluguel) {
-        return null;
+        return status(CREATED).body(aluguelService.save(aluguel));
     }
 
     @Override
     public ResponseEntity<AluguelResponse> findById(Long id) {
-        return null;
+        return ok(aluguelService.findById(id));
     }
 
     @Override
     public ResponseEntity<List<AluguelResponse>> findAll() {
-        return null;
+        return ok(aluguelService.findAll());
     }
 
     @Override
     public ResponseEntity<Void> updateById(Long id, AluguelUpdateRequest request) {
-        return ResponseEntity.noContent().build();
+        aluguelService.updateById(id, request);
+        return noContent().build();
     }
 
     @Override
     public ResponseEntity<Void> deleteById(Long id) {
-        return ResponseEntity.noContent().build();
+        aluguelService.deleteById(id);
+        return noContent().build();
     }
 }
